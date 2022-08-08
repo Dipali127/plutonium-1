@@ -8,7 +8,7 @@ function ChangetoLowerCase(){
     console.log("DIPALI BOHARA".toLowerCase());
 }
 function ChangetoUpperCase(){
-    console.log("DIPALI BOHARA".toUpperCase());
+    console.log("dipali bohara".toUpperCase());
 }
 //toUpperCase() function will convert the string in Uppercase.
 module.exports.Spacefunction=trim
