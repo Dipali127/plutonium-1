@@ -95,6 +95,33 @@ router.get('/films/:filmId',function(req,res){
     }
     res.send("The film id doesn't match any movie");
 });
+//assignment1(9-August):-"missing no of an array (interview question)"
+ router.get("/sol1", function (req, res)
+{
+    let array=[1,2,3,5,6,7];
+    let SumWithoutMissingNo=0;
+    for (let i=0;i<array.length;i++)
+     {
+         SumWithoutMissingNo+=array[i];
+     }
+     let n=array.length+1;
+     let SumWithMissingNo=n*(n+1)/2;
+     let MissingNo=SumWithMissingNo-SumWithoutMissingNo;
+     res.send({ "Missing No" : MissingNo }); 
+});
+//assignment2(9-August):-"missing number of an array(interview question)"
+router.get("/sol2",function(req,res){
+    let array=[33,34,35,37,38];
+    let SumWithoutMissingNo=0;
+    for(let i=0;i<array.length;i++)
+    {
+        SumWithoutMissingNo+=array[i];
+    }
+    let n=array.length+1;
+    let SumWithMissingNo=n*(array[0]+array[4])/2;
+    let MissingNo=SumWithMissingNo-SumWithoutMissingNo;
+    res.send({"Missing No" : MissingNo})
+})
 
 router.get('/test-you', function (req, res) {
     res.send('This is the second routes implementation')
