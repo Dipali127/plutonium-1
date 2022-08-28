@@ -16,7 +16,7 @@ const basicCode= async function(req, res, next) {
 const createUser= async function (req, res) {
     
     let data= req.body
-    let tokenDataInHeaders= req.headers.token
+    let tokenDataInHeaders= req.headers.today
     //Get all headers from request
     console.log("Request headers before modificatiom",req.headers)
     //Get a header from request
@@ -26,7 +26,7 @@ const createUser= async function (req, res) {
     //Set a header in request
     req.headers['month']='June' //req.headers.month = "June"
 
-    //Set an attribute in request object
+  //Set an attribute in request object
     req.anything = "everything"
     
     

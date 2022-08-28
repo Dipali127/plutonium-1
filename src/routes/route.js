@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
 // const UserModel= require("../models/userModel.js")
-const UserController= require("../controllers/userController")
-const BookController= require("../controllers/bookController")
-const commonMW = require ("../middlewares/commonMiddlewares")
+//const UserController= require("../controllers/userController")
+//const BookController= require("../controllers/bookController")
+//const commonMW = require ("../middlewares/commonMiddlewares")
+
+
+const coustmerController = require("../controllers/costumerController")
+const productController = require("../controllers/productController")
+const orderController = require("../controllers/orderController")
 
 router.get("/test-me", function (req, res) {
     res.send("My first ever api!")
@@ -12,12 +17,35 @@ router.get("/test-me", function (req, res) {
 
 
 
-router.post("/createBook", BookController.createBook  )
+
+
+
+//router.post("/createsUsers", UserController.createUser)
+router.post("/createCoustmer", coustmerController.headerValidationCount, coustmerController.createCoustmer)
+router.post("/createProduct", productController.createProduct) 
+router.post("/createOrder", orderController.headerValidationOrder, orderController.createOrder)
+router.put("/orderandamoutupdation",orderController.headerValidationOrder, orderController.orderandamoutupdation)
 
 
 
 
-router.post("/createUser", UserController.createUser)
+
+
+
+
+
+
+
+
+module.exports = router;
+
+
+// router.post("/createBook", BookController.createBook  )
+
+
+
+
+// router.post("/createUser", UserController.createUser)
 // router.get("/getUsersData", UserController.getUsersData)
 
 
@@ -48,7 +76,7 @@ router.post("/createUser", UserController.createUser)
 
 
 
-router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.mid4, UserController.basicCode)
+//router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.mid4, UserController.basicCode)
 
 
 
@@ -59,4 +87,3 @@ router.get("/basicRoute", commonMW.mid1, commonMW.mid2, commonMW.mid3, commonMW.
 
 
 
-module.exports = router;
