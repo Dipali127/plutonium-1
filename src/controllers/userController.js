@@ -4,6 +4,7 @@ const userModel = require("../models/userModel");
 /*
   Read all the comments multiple times to understand why we are doing what we are doing in login api and getUserData api
 */
+//Question-1
 const createUser = async function (abcd, xyz) {
   //You can name the req, res objects anything.
   //but the first parameter is always the request 
@@ -13,6 +14,7 @@ const createUser = async function (abcd, xyz) {
   console.log(abcd.newAtribute);
   xyz.send({ msg: savedData });
 };
+//Question-2
 
 const loginUser = async function (req, res) {
   let userName = req.body.emailId;
@@ -43,6 +45,7 @@ const loginUser = async function (req, res) {
   res.send({ status: true, token: token });
 };
 
+//Question-3
 const getUserData = async function (req, res) {
   let token = req.headers["x-Auth-token"];
   if (!token) token = req.headers["x-auth-token"];
@@ -91,8 +94,25 @@ const updateUser = async function (req, res) {
   let updatedUser = await userModel.findOneAndUpdate({ _id: userId }, userData);
   res.send({ status: updatedUser, data: updatedUser });
 };
+const deleteUser = async function(req,res){
+  let userId = req.params.userId
+  let user = await userModel.findById(userId)
+  if(!user){
+    return res.send("doesn't exist")
+  }
+  let newData=user.isDeleted
+  if(newData==false){
+    return res.send("Can not delete")
+  }
+  else{
+    let updatedUser =await userModel.findByIdAndUpdate({_id:userId})
+    res.send({status:true ,updatedUser})
+  }
+}
+
 
 module.exports.createUser = createUser;
 module.exports.getUserData = getUserData;
 module.exports.updateUser = updateUser;
 module.exports.loginUser = loginUser;
+module.exports.deleteUser=deleteUser;
